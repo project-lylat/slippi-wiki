@@ -616,6 +616,12 @@ Example: `{'characters': {'18': 5209}, 'names': {'netplay': 'Player', 'code': 'A
 #### Lylat Metadata
 | Key | Type | Description |
 | --- | --- | --- |
-| clips | array | Moments the player marked during the game. Each entry is an object with `startFrame` and `endFrame` (int32, inclusive, same frame numbering as `lastFrame`). Entries are sorted by `startFrame` and never overlap. `endFrame` is never greater than `lastFrame`.
+| clips | ClipMarker[] | Moments the player marked during the game. Sorted by `startFrame` and never overlapping. See table [ClipMarker](#clipmarker)
 
-Example: `{'clips': [{'startFrame': 4210, 'endFrame': 4990}]}` means one clip from frame `4210` to frame `4990`. Readers that don't use this key can ignore it.
+#### ClipMarker
+| Key | Type | Description |
+| --- | --- | --- |
+| startFrame | int32 | First frame of the clip, using the same frame numbering as `lastFrame`
+| endFrame | int32 | Last frame of the clip (inclusive). Never greater than `lastFrame`
+
+Example: `{'clips': [{'startFrame': 4210, 'endFrame': 4990}]}` means one clip from frame `4210` to frame `4990`. Readers that don't use the `lylat` key can ignore it.
