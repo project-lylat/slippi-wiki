@@ -622,6 +622,6 @@ Example: `{'characters': {'18': 5209}, 'names': {'netplay': 'Player', 'code': 'A
 | Key | Type | Description |
 | --- | --- | --- |
 | startFrame | int32 | First frame of the clip. Starts at -123. Frame 0 is when the timer starts counting down
-| endFrame | int32 | Last frame of the clip (inclusive). Starts at -123. Frame 0 is when the timer starts counting down. Never greater than `lastFrame`
+| endFrame | int32 | Last frame of the clip (inclusive). Starts at -123. Frame 0 is when the timer starts counting down. Always greater than `startFrame` (the two are never equal) and never greater than `lastFrame`
 
 Example: `{'clips': [{'startFrame': 4210, 'endFrame': 4990}]}` means one clip from frame `4210` to frame `4990`. Readers that don't use the `lylat` key can ignore it.
