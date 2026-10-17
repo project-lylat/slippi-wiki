@@ -603,6 +603,7 @@ The metadata element can be read individually to save processing time with a bit
 | players | object | Metadata for the individual players. See table [Players Metadata](#players-metadata)
 | playedOn | string | Platform the game was played on (values include `dolphin`, `nintendont`, and `network`)
 | consoleNick | string | The name of the console the replay was created on.
+| lylat | object | Data written by Lylat-compatible clients. See table [Lylat Metadata](#lylat-metadata)
 
 #### Players Metadata
 | Key | Type | Description |
@@ -611,3 +612,10 @@ The metadata element can be read individually to save processing time with a bit
 | names | object | Contains the Dolphin netplay name or Slippi Online Display Name depending on which form of netplay was used. Will also contain the connect code for Slippi Online if applicable.
 
 Example: `{'characters': {'18': 5209}, 'names': {'netplay': 'Player', 'code': 'ABCD#0'}}` means the player used Marth (internal character ID `18`) for all `5209` frames of the game and had the Display Name `Player` and Connect Code `ABCD#0`. The netplay name from Dolphin and Display Name from Slippi Online use the same key.
+
+#### Lylat Metadata
+| Key | Type | Description |
+| --- | --- | --- |
+| clips | array | Moments the player marked during the game. Each entry is an object with `startFrame` and `endFrame` (int32, inclusive, same frame numbering as `lastFrame`). Entries are sorted by `startFrame` and never overlap. `endFrame` is never greater than `lastFrame`.
+
+Example: `{'clips': [{'startFrame': 4210, 'endFrame': 4990}]}` means one clip from frame `4210` to frame `4990`. Readers that don't use this key can ignore it.
