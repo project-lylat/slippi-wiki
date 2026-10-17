@@ -616,7 +616,7 @@ Example: `{'characters': {'18': 5209}, 'names': {'netplay': 'Player', 'code': 'A
 #### Lylat Metadata
 | Key | Type | Description |
 | --- | --- | --- |
-| clips | ClipMarker[] | Moments the player marked during the game. Sorted by `startFrame` and never overlapping. See table [ClipMarker](#clipmarker)
+| clips | ClipMarker[] | Moments the player marked during the game. See table [ClipMarker](#clipmarker)
 
 #### ClipMarker
 | Key | Type | Description |
