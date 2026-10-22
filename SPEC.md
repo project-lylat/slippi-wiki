@@ -603,6 +603,7 @@ The metadata element can be read individually to save processing time with a bit
 | players | object | Metadata for the individual players. See table [Players Metadata](#players-metadata)
 | playedOn | string | Platform the game was played on (values include `dolphin`, `nintendont`, and `network`)
 | consoleNick | string | The name of the console the replay was created on.
+| bookmarks | Bookmark[] | Moments marked during the game. See table [Bookmark](#bookmark)
 
 #### Players Metadata
 | Key | Type | Description |
@@ -611,3 +612,11 @@ The metadata element can be read individually to save processing time with a bit
 | names | object | Contains the Dolphin netplay name or Slippi Online Display Name depending on which form of netplay was used. Will also contain the connect code for Slippi Online if applicable.
 
 Example: `{'characters': {'18': 5209}, 'names': {'netplay': 'Player', 'code': 'ABCD#0'}}` means the player used Marth (internal character ID `18`) for all `5209` frames of the game and had the Display Name `Player` and Connect Code `ABCD#0`. The netplay name from Dolphin and Display Name from Slippi Online use the same key.
+
+#### Bookmark
+| Key | Type | Description |
+| --- | --- | --- |
+| startFrame | int32 | First frame of the bookmark. Starts at -123. Frame 0 is when the timer starts counting down
+| endFrame | int32 | Last frame of the bookmark (inclusive). Starts at -123. Frame 0 is when the timer starts counting down. Always greater than `startFrame` (the two are never equal) and never greater than `lastFrame`
+
+Example: `{'bookmarks': [{'startFrame': 100, 'endFrame': 200}, {'startFrame': 300, 'endFrame': 500}]}` means two bookmarks, frames `100` to `200` and `300` to `500`.
